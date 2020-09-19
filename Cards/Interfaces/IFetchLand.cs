@@ -7,6 +7,6 @@ namespace Hypergeometric.API.Cards.Interfaces
          bool FetchedEntersUntapped{ get; set; }
          bool CanOnlyFetchBasics{ get; set; }
          LandType[] FetchableTypes { get; set; }
-         List<(LandColor,int)> FetchableColors(List<ICard> cards);
+         List<LandColor> FetchableColors(List<Card> cards);
     }
 }

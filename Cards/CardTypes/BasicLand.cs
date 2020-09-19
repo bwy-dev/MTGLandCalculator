@@ -1,15 +1,10 @@
+using System.Collections.Generic;
 using Hypergeometric.API.Cards.Interfaces;
 
 namespace Hypergeometric.API.Cards.CardTypes
 {
-    public class BasicLand : ICard
+    public class BasicLand : Card
     {
-        
-        public string Name { get; set; }
-        public bool Untapped { get; set; }
-        public bool IsBasic { get; set; }
-        public LandColor[] Colors { get; set; }
-        public LandType[] LandTypes { get; set; }
         
         public BasicLand(string name, bool untapped, bool isBasic, LandColor[] colors, LandType[] landTypes)
         {
@@ -20,5 +15,6 @@ namespace Hypergeometric.API.Cards.CardTypes
             this.Colors = colors;
 
         }
+
     }
 }
