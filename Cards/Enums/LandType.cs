@@ -1,0 +1,1 @@
+public enum LandType{ Plains, Island, Swamp, Forest, Mountain }
