@@ -15,12 +15,12 @@ namespace Hypergeometric.API.Controllers
             _calculator = calculator;
         }
 
-        [HttpPost("calc")]
-        public IActionResult Calculate([FromBody] CalcValuesDto calcValuesDto)
-        {
+     
 
-            ResultsDto result = _calculator.CalculateProbability(calcValuesDto.PS,calcValuesDto.SS,calcValuesDto.SIS,calcValuesDto.SIP);
-            return Ok(result);
+        [HttpPost("parse")]
+        public IActionResult Parse([FromBody] CalcValuesDto input)
+        {
+            return Ok(_calculator.ParseDeckList(input));
         }
     }
 }

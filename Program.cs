@@ -20,6 +20,7 @@ namespace Hypergeometric.API
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
+                    Cards.Cards.PopulateCardList();
                     webBuilder.UseStartup<Startup>();
                 });
     }

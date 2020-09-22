@@ -1,11 +1,12 @@
+using System.Collections.Generic;
+using Hypergeometric.API.Cards;
+using Hypergeometric.API.Cards.Interfaces;
+
 namespace Hypergeometric.API.Dtos
 {
     public class ResultsDto
     {
-        public decimal AtLeastOne { get; set; }
-        public decimal ExactlyOne { get; set; }
-        public decimal OneOrLess { get; set; }
-        public decimal ExactlyZero { get; set; }
+        public List<CardBundle> Cards{get;set;}
 
         public ResultsDto(){}
     }

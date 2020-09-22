@@ -13,15 +13,13 @@ namespace Hypergeometric.API.Cards.Interfaces
 
         
         ///<summary>Delegate for checking to see if a card has a particular property</summary>
-        ///<example>(card) => return card.Name == "Mountain"</example>
-        ///<example>(card) => return card.Untapped</example>
         ///<returns>true if the card has the desired property, otherwise false.</returns>
         public delegate bool SearchProperty(Card card);
 
         ///<summary>Returns a subset of a given list of cards that match a given search property.</summary>
-        public static List<Card> FindCardWherePropertyEquals(List<Card> cards, SearchProperty searchProperty)
+        public static List<Card> FindCardsWherePropertyEquals(List<Card> cards, SearchProperty searchProperty)
         {
-            List<Card> ret = new();
+            List<Card> ret = new List<Card>();
             for (int i = 0; i < cards.Count; i++)
             {
                 if(searchProperty(cards[i]))
@@ -30,6 +28,18 @@ namespace Hypergeometric.API.Cards.Interfaces
                 }
             }
             return ret;
+        }
+
+        public static Card FindCardWherePropertyEquals(List<Card> cards, SearchProperty searchProperty)
+        {
+            for (int i = 0; i < cards.Count; i++)
+            {
+                if(searchProperty(cards[i]))
+                {
+                    return cards[i];
+                }
+            }
+            return null;
         }
     }
 }

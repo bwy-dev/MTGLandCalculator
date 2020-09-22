@@ -6,7 +6,6 @@ namespace Hypergeometric.API.Cards.CardTypes
 {
     public class FetchLand : Card, IFetchLand
     {
-        
         public bool CanOnlyFetchBasics { get; set; }
         public bool FetchedEntersUntapped { get; set; }
         public LandType[] FetchableTypes { get; set; }
@@ -26,22 +25,22 @@ namespace Hypergeometric.API.Cards.CardTypes
         }
         public List<LandColor> FetchableColors(List<Card> cards)
         {
-            List<Card> fetchableCards = Card.FindCardWherePropertyEquals(cards, (c) =>{
-                return c.LandTypes.Contains(FetchableTypes[0]) || c.LandTypes.Contains(FetchableTypes[1]);
+            List<Card> fetchableCards = FindCardsWherePropertyEquals(cards, (c) =>{
+                return c.LandTypes.Intersect(FetchableTypes).Any();
             });
 
             List<LandColor[]> colors = fetchableCards.Select(o => o.Colors).ToList();
 
-            List<LandColor> ret = new();
+            List<LandColor> ret = new List<LandColor>();
             foreach(LandColor[] colorArr in colors)
             {
                 for (int i = 0; i < colorArr.Length; i++)
                 {
-                    ret.Add(colorArr[i]);
+                    if(!ret.Contains(colorArr[i])) ret.Add(colorArr[i]);
                 }
             }
 
-            return ret.Distinct().ToList();
+            return ret;
         }
 
     }
